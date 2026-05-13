@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>录取案例 | Emma 英联邦留学申请专家</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1a2744;
+      --accent: #c9a84c;
+      --accent-light: #e8d5a3;
+      --text: #2c2c2c;
+      --text-muted: #6b7280;
+      --bg: #f8f7f4;
+      --white: #ffffff;
+      --border: #e5e0d8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,39,68,0.97); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6vw; height: 64px;
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+    }
+    .nav-logo { font-family: 'Noto Serif SC', serif; font-size: 1.15rem; color: var(--accent); letter-spacing: 0.08em; text-decoration: none; }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.04em; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: var(--primary) !important; padding: 7px 20px; border-radius: 2px; font-weight: 600 !important; }
+    .nav-cta:hover { background: #e0bb62 !important; }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, #0f1a32 0%, #1a2744 100%);
+      padding: 120px 6vw 60px;
+      text-align: center;
+    }
+    .page-hero-label { color: var(--accent); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .page-hero h1 { font-family: 'Noto Serif SC', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: #fff; margin-bottom: 0.8rem; }
+    .page-hero p { color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto; font-size: 0.95rem; }
+
+    /* TABS */
+    .tabs-wrap {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 64px; z-index: 50;
+    }
+    .tabs {
+      display: flex; gap: 0; max-width: 1100px;
+      margin: 0 auto; padding: 0 6vw;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      padding: 16px 24px; border: none; background: none; cursor: pointer;
+      font-size: 0.88rem; color: var(--text-muted); letter-spacing: 0.04em;
+      border-bottom: 2px solid transparent; transition: all 0.2s;
+      white-space: nowrap; font-family: 'Noto Sans SC', sans-serif;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .tab-btn:hover { color: var(--primary); }
+    .tab-btn.active { color: var(--primary); border-bottom-color: var(--accent); font-weight: 600; }
+
+    /* CASES SECTION */
+    .cases-section { padding: 60px 6vw; max-width: 1200px; margin: 0 auto; }
+    .region-panel { display: none; }
+    .region-panel.active { display: block; }
+
+    .region-header { margin-bottom: 2.5rem; }
+    .region-header h2 { font-family: 'Noto Serif SC', serif; font-size: 1.6rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .region-header p { color: var(--text-muted); font-size: 0.9rem; }
+
+    .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.6rem; }
+
+    .case-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 2px; overflow: hidden;
+      transition: all 0.25s;
+    }
+    .case-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,39,68,0.1); border-color: var(--accent); }
+
+    .case-card-top {
+      background: var(--primary); padding: 1.6rem;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+    }
+    .case-school { font-family: 'Noto Serif SC', serif; font-size: 1.05rem; color: #fff; font-weight: 600; line-height: 1.4; }
+    .case-major { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+    .case-badge {
+      flex-shrink: 0; padding: 4px 10px; border-radius: 2px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; white-space: nowrap;
+    }
+    .badge-top { background: var(--accent); color: var(--primary); }
+    .badge-reverse { background: #e8563a; color: #fff; }
+    .badge-cross { background: #5b7fa8; color: #fff; }
+
+    .case-card-body { padding: 1.5rem; }
+    .case-profile {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem;
+      margin-bottom: 1.2rem; padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .profile-item { font-size: 0.82rem; }
+    .profile-label { color: var(--text-muted); margin-bottom: 1px; }
+    .profile-value { color: var(--primary); font-weight: 500; }
+
+    .case-story h4 { font-size: 0.82rem; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .case-story p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.85; }
+
+    .case-result {
+      margin-top: 1.2rem; padding: 10px 14px;
+      background: rgba(201,168,76,0.08); border-left: 3px solid var(--accent);
+      font-size: 0.83rem; color: var(--primary); font-weight: 500;
+    }
+
+    /* FOOTER */
+    footer { background: #0a1120; padding: 40px 6vw 24px; color: rgba(255,255,255,0.5); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; flex-wrap: wrap; gap: 12px; }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .cases-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .tabs { gap: 0; }
+      .tab-btn { padding: 14px 14px; font-size: 0.82rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Emma · 英联邦留学</a>
+  <ul class="nav-links">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="about.html">关于Emma</a></li>
+    <li><a href="cases.html" class="active">录取案例</a></li>
+    <li><a href="contact.html">常见问题</a></li>
+    <li><a href="contact.html" class="nav-cta">预约咨询</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-label">真实案例 · 共同见证</div>
+  <h1>录取案例集锦</h1>
+  <p>从名校冲刺到低分逆袭，每一个故事都是 Emma 与学生共同书写的奇迹</p>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab-btn" data-region="uk">🇬🇧 英国</button>
+    <button class="tab-btn" data-region="hk">🇭🇰 香港</button>
+    <button class="tab-btn" data-region="au">🇦🇺 澳大利亚</button>
+    <button class="tab-btn" data-region="sg">🇸🇬 新加坡</button>
+    <button class="tab-btn" data-region="nz">🇳🇿 新西兰</button>
+    <button class="tab-btn" data-region="ca">🇨🇦 加拿大</button>
+  </div>
+</div>
+
+<div class="cases-section">
+
+  <!-- 英国 -->
+  <div class="region-panel" id="panel-uk">
+    <div class="region-header">
+      <h2>🇬🇧 英国录取案例</h2>
+      <p>G5精英院校 · 罗素大学集群 · 覆盖本科、硕士、博士申请</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">剑桥大学</div>
+            <div class="case-major">工程学院 · 博士研究生</div>
+          </div>
+          <span class="case-badge badge-top">🏆 名校录取</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">985本科 · GPA 3.8</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">机械工程博士</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 7.5</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2023年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>该学生科研经历丰富但缺乏顶级期刊发表。Emma 深度挖掘其课题研究潜力，协助撰写极具说服力的研究计划书，并精准匹配导师研究兴趣，最终获得剑桥导师主动邀约面试。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：获剑桥大学工程系博士全额奖学金录取</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">伦敦大学学院（UCL）</div>
+            <div class="case-major">建筑学院 · 硕士研究生</div>
+          </div>
+          <span class="case-badge badge-cross">🔄 跨专业</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">双非本科 · GPA 3.5</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">环境设计硕士（跨专业）</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 7.0</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>学生本科为土木工程，跨申建筑设计方向难度极大。Emma 协助整理作品集思路，从工程角度切入设计叙事，强调跨学科优势，文书逻辑清晰打动招生官。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：UCL 建筑环境学院有条件录取</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">爱丁堡大学</div>
+            <div class="case-major">商学院 · 硕士研究生</div>
+          </div>
+          <span class="case-badge badge-reverse">💪 低分逆袭</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">普通一本 · GPA 2.9</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">市场营销硕士</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 6.5</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>GPA 偏低是最大障碍。Emma 引导学生梳理丰富的实习经历与创业项目，以实践能力弥补学术短板，并通过有力的推荐信组合有效提升申请竞争力。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：爱丁堡大学商学院正式录取（低于均分要求）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 香港 -->
+  <div class="region-panel" id="panel-hk">
+    <div class="region-header">
+      <h2>🇭🇰 香港录取案例</h2>
+      <p>港大 · 港中文 · 科大 · 理大 · 城大 · 浸会</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">香港大学</div>
+            <div class="case-major">法律学院 · 硕士研究生</div>
+          </div>
+          <span class="case-badge badge-top">🏆 名校录取</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">211本科 · GPA 3.6</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">国际法律硕士（LLM）</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 7.5</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>法律类申请竞争极激烈，港大 LLM 每年录取率不足 20%。Emma 从学生的国际仲裁实习经历切入，配合高质量的 Personal Statement 精准击中招生官偏好。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：香港大学法律硕士正式录取</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">香港科技大学</div>
+            <div class="case-major">商学院 · 硕士研究生</div>
+          </div>
+          <span class="case-badge badge-reverse">💪 低分逆袭</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">双非本科 · GPA 3.1</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">金融科技硕士</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 7.0</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2023年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>学生 GPA 不突出，但有区块链创业经历。Emma 将创业故事与 FinTech 学术目标深度结合，突出实战能力，以差异化叙事成功突围强竞争申请池。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：香港科技大学金融科技硕士录取</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">香港中文大学</div>
+            <div class="case-major">新闻与传播学院 · 硕士</div>
+          </div>
+          <span class="case-badge badge-cross">🔄 跨专业</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">211本科（经济） · GPA 3.4</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">全球传播硕士（跨专业）</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 7.0</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>跨专业背景下，Emma 协助学生整合其财经媒体实习和自媒体运营经验，构建完整的"经济报道"专业逻辑链，文书讲述了一个有说服力的转型故事。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：香港中文大学传播学院录取</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 澳大利亚 -->
+  <div class="region-panel" id="panel-au">
+    <div class="region-header">
+      <h2>🇦🇺 澳大利亚录取案例</h2>
+      <p>澳洲八大 · 全球百强 · 奖学金申请</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">墨尔本大学</div>
+            <div class="case-major">商学院 · 硕士研究生</div>
+          </div>
+          <span class="case-badge badge-reverse">💪 低分逆袭</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">普通一本 · GPA 2.8（75分）</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">金融硕士</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 6.5</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2023年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>GPA 远低于均分要求。Emma 重新挖掘学生的证券公司实习经历和 CFA 一级通过的加分项，通过充分的背景补充材料和有针对性的文书，成功说服招生委员会。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：墨尔本大学金融硕士录取，远超预期</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">悉尼大学</div>
+            <div class="case-major">教育学院 · 硕士研究生</div>
+          </div>
+          <span class="case-badge badge-top">🏆 奖学金</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">985本科 · GPA 3.7</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">教育领导力硕士</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 7.5</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>学生背景优秀但奖学金竞争激烈。Emma 协助申请 Sydney Scholars Award，深度挖掘其支教经历和教育公平研究兴趣，奖学金申请文书写出了真实情感与学术价值。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：悉尼大学录取 + 部分奖学金</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">澳国立大学（ANU）</div>
+            <div class="case-major">政策研究学院 · 硕士</div>
+          </div>
+          <span class="case-badge badge-cross">🔄 跨专业</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">211本科（理工科） · GPA 3.5</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">公共政策硕士（跨专业）</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 7.0</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>理工科背景申请社科方向，Emma 将其数据分析能力重新包装为政策研究的核心优势，联系了多位具有理工背景的 ANU 政策方向校友，构建有力的职业转型叙述。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：澳国立大学公共政策硕士录取</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 新加坡 -->
+  <div class="region-panel" id="panel-sg">
+    <div class="region-header">
+      <h2>🇸🇬 新加坡录取案例</h2>
+      <p>NUS · NTU · SMU · 亚洲顶尖院校申请</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">新加坡国立大学（NUS）</div>
+            <div class="case-major">计算机学院 · 硕士研究生</div>
+          </div>
+          <span class="case-badge badge-top">🏆 名校录取</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">985本科 · GPA 3.6</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">计算机科学硕士</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 7.0</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>NUS CS 竞争极强，每年申请者众多。Emma 协助学生整理两段大厂实习经历，配合科研论文投稿记录，形成"实践与理论双线并进"的完整申请故事，成功脱颖而出。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：新加坡国立大学计算机硕士录取 + 部分奖学金</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">新加坡南洋理工大学（NTU）</div>
+            <div class="case-major">商学院 · MBA</div>
+          </div>
+          <span class="case-badge badge-reverse">💪 低分逆袭</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">普通本科 · GPA 3.0</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">工商管理硕士（MBA）</div></div>
+            <div class="profile-item"><div class="profile-label">工作年限</div><div class="profile-value">6年管理经验</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2023年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>MBA 申请以职业背景为核心。Emma 帮助学生系统梳理 6 年快消行业管理经历，提炼核心领导力事例，设计清晰的职业发展蓝图，成功打动 NTU 招生委员会。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：南洋理工大学 MBA 正式录取</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">新加坡管理大学（SMU）</div>
+            <div class="case-major">法学院 · 法律硕士</div>
+          </div>
+          <span class="case-badge badge-cross">🔄 跨专业</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">211本科（会计） · GPA 3.4</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">商业法律硕士（跨专业）</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 7.5</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>会计背景申请商业法律，逻辑天然契合但需要强化。Emma 协助学生整理税务顾问实习中的合规经历，以"数字与法律的交叉"为主轴，构建令人信服的跨专业叙事。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：新加坡管理大学法律硕士录取</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 新西兰 -->
+  <div class="region-panel" id="panel-nz">
+    <div class="region-header">
+      <h2>🇳🇿 新西兰录取案例</h2>
+      <p>奥克兰大学 · 惠灵顿维多利亚 · 坎特伯雷大学</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">奥克兰大学</div>
+            <div class="case-major">工程学院 · 本科</div>
+          </div>
+          <span class="case-badge badge-top">🏆 名校录取</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">高中毕业 · 均分 92</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">机械工程本科</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 6.5</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>高中生背景相对单一，Emma 协助学生挖掘参加全国机器人竞赛的经历，撰写展现工程兴趣与自驱力的个人陈述，顺利获得奥大工程系提前录取。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：奥克兰大学工程学院提前录取</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">惠灵顿维多利亚大学</div>
+            <div class="case-major">法律学院 · 本科</div>
+          </div>
+          <span class="case-badge badge-reverse">💪 低分逆袭</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">高中毕业 · 均分 78</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">法律本科</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 6.5</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2023年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>均分偏低但学生对法律充满热情。Emma 帮助学生通过个人陈述展现独特的社会关怀视角，配合课外辩论活动经历，成功打动维大法学院招生官。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：惠灵顿维多利亚大学法律本科有条件录取</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">坎特伯雷大学</div>
+            <div class="case-major">理学院 · 硕士研究生</div>
+          </div>
+          <span class="case-badge badge-cross">🔄 跨专业</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">211本科（统计学） · GPA 3.3</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">环境科学硕士（跨方向）</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 6.5</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>统计背景转申环境科学，Emma 强调气候数据分析的交叉应用价值，协助联系导师并争取到科研合作意向，最终以数据科学方向切入环境研究获得录取。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：坎特伯雷大学环境科学硕士录取</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 加拿大 -->
+  <div class="region-panel" id="panel-ca">
+    <div class="region-header">
+      <h2>🇨🇦 加拿大录取案例</h2>
+      <p>多伦多大学 · UBC · 麦吉尔 · 滑铁卢</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">多伦多大学</div>
+            <div class="case-major">罗特曼管理学院 · 硕士</div>
+          </div>
+          <span class="case-badge badge-top">🏆 名校录取</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">985本科 · GPA 3.7</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">管理学（分析方向）硕士</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">托福 105</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>多大罗特曼录取竞争激烈。Emma 协助学生系统强化简历中的数据分析项目，配合两封优质推荐信，文书从"商业问题的数据化解决"角度切入，精准命中项目定位。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：多伦多大学罗特曼管理学院录取</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">英属哥伦比亚大学（UBC）</div>
+            <div class="case-major">教育学院 · 硕士研究生</div>
+          </div>
+          <span class="case-badge badge-reverse">💪 低分逆袭</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">普通一本 · GPA 3.0</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">教育技术硕士</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">雅思 7.0</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2023年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>学生 GPA 平平但有丰富的在线教育平台运营经历。Emma 以"实践先行的教育改革者"为人设重塑申请叙事，突出其 5 万用户在线课程运营成绩，成功打动 UBC 招生官。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：UBC 教育技术硕士录取</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-top">
+          <div>
+            <div class="case-school">麦吉尔大学</div>
+            <div class="case-major">医学院 · 研究型硕士</div>
+          </div>
+          <span class="case-badge badge-top">🏆 名校录取</span>
+        </div>
+        <div class="case-card-body">
+          <div class="case-profile">
+            <div class="profile-item"><div class="profile-label">学生背景</div><div class="profile-value">985本科（生物）· GPA 3.8</div></div>
+            <div class="profile-item"><div class="profile-label">申请方向</div><div class="profile-value">神经科学研究型硕士</div></div>
+            <div class="profile-item"><div class="profile-label">语言成绩</div><div class="profile-value">托福 100</div></div>
+            <div class="profile-item"><div class="profile-label">申请年份</div><div class="profile-value">2024年</div></div>
+          </div>
+          <div class="case-story">
+            <h4>Emma 的策略</h4>
+            <p>研究型项目申请核心是匹配导师。Emma 协助学生逐一分析麦吉尔神经科学各实验室的最新研究，精准撰写个性化套磁邮件，成功获得导师预接收后顺利录取。</p>
+          </div>
+          <div class="case-result">✅ 最终结果：麦吉尔大学神经科学硕士 + 导师资助</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /cases-section -->
+
+<footer>
+  <div class="footer-bottom">
+    <span>© 2025 Emma 留学顾问工作室. 保留所有权利.</span>
+    <div class="footer-links">
+      <a href="index.html">首页</a>
+      <a href="about.html">关于Emma</a>
+      <a href="contact.html">预约咨询</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Read URL param and activate tab
+  function getRegionFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('region') || 'uk';
+  }
+
+  function activateTab(region) {
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.region === region);
+    });
+    document.querySelectorAll('.region-panel').forEach(panel => {
+      panel.classList.toggle('active', panel.id === 'panel-' + region);
+    });
+    // Update URL without reload
+    const url = new URL(window.location);
+    url.searchParams.set('region', region);
+    window.history.replaceState({}, '', url);
+  }
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => activateTab(btn.dataset.region));
+  });
+
+  // Init
+  activateTab(getRegionFromURL());
+</script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>预约咨询 & 常见问题 | Emma 英联邦留学</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1a2744;
+      --accent: #c9a84c;
+      --accent-light: #e8d5a3;
+      --text: #2c2c2c;
+      --text-muted: #6b7280;
+      --bg: #f8f7f4;
+      --white: #ffffff;
+      --border: #e5e0d8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,39,68,0.97); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6vw; height: 64px;
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+    }
+    .nav-logo { font-family: 'Noto Serif SC', serif; font-size: 1.15rem; color: var(--accent); letter-spacing: 0.08em; text-decoration: none; }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.04em; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: var(--primary) !important; padding: 7px 20px; border-radius: 2px; font-weight: 600 !important; }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, #0f1a32 0%, #1a2744 100%);
+      padding: 120px 6vw 60px; text-align: center;
+    }
+    .page-hero-label { color: var(--accent); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .page-hero h1 { font-family: 'Noto Serif SC', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: #fff; margin-bottom: 0.8rem; }
+    .page-hero p { color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto; font-size: 0.95rem; }
+
+    /* SECTION BASE */
+    section { padding: 90px 6vw; }
+    .section-label { display: flex; align-items: center; gap: 10px; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .section-label::before { content: ''; display: block; width: 22px; height: 1px; background: var(--accent); }
+    .section-title { font-family: 'Noto Serif SC', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--primary); font-weight: 700; margin-bottom: 1rem; }
+
+    /* CONTACT SECTION */
+    .contact-section { background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 3rem; }
+
+    /* QR & CONTACT INFO */
+    .contact-info-card {
+      background: var(--primary); padding: 2.5rem; border-radius: 2px; color: var(--white);
+    }
+    .contact-info-card h3 { font-family: 'Noto Serif SC', serif; font-size: 1.2rem; color: var(--accent); margin-bottom: 1.5rem; }
+    .qr-area {
+      width: 160px; height: 160px;
+      background: rgba(255,255,255,0.08); border: 1px dashed rgba(255,255,255,0.25);
+      border-radius: 4px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem; gap: 8px;
+      cursor: pointer; transition: border-color 0.2s;
+    }
+    .qr-area:hover { border-color: var(--accent); }
+    .qr-icon-lg { font-size: 2.8rem; opacity: 0.5; }
+    .qr-tip { font-size: 0.75rem; color: rgba(255,255,255,0.4); text-align: center; }
+    .contact-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 1.5rem 0; }
+    .contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1.2rem; }
+    .contact-item-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .contact-item-label { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-bottom: 2px; }
+    .contact-item-value { font-size: 0.9rem; color: rgba(255,255,255,0.85); }
+    .response-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+      color: var(--accent); font-size: 0.75rem; padding: 5px 12px; border-radius: 20px;
+      margin-top: 1rem;
+    }
+
+    /* FORM */
+    .contact-form h3 { font-family: 'Noto Serif SC', serif; font-size: 1.2rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .form-sub { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 0.82rem; color: var(--primary); margin-bottom: 6px; font-weight: 500; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 10px 14px;
+      border: 1px solid var(--border); border-radius: 2px;
+      font-family: 'Noto Sans SC', sans-serif; font-size: 0.88rem;
+      color: var(--text); background: var(--bg); transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .btn-submit {
+      width: 100%; background: var(--primary); color: var(--white);
+      padding: 14px; border: none; border-radius: 2px;
+      font-family: 'Noto Sans SC', sans-serif; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em;
+    }
+    .btn-submit:hover { background: var(--accent); color: var(--primary); }
+    .form-note { font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 0.8rem; }
+
+    /* FAQ */
+    .faq-section { background: var(--bg); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; }
+    .faq-item {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 2px; overflow: hidden;
+    }
+    .faq-q {
+      padding: 1.2rem 1.4rem; display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 12px;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .faq-q:hover { background: rgba(201,168,76,0.04); }
+    .faq-q-text { font-weight: 500; color: var(--primary); font-size: 0.9rem; line-height: 1.5; }
+    .faq-icon { color: var(--accent); font-size: 1.1rem; flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      padding: 0 1.4rem; max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 1.2rem; }
+    .faq-a p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.85; }
+
+    /* CTA BANNER */
+    .cta-banner {
+      background: linear-gradient(135deg, #0f1a32 0%, #1a2744 100%);
+      padding: 80px 6vw; text-align: center;
+    }
+    .cta-banner h2 { font-family: 'Noto Serif SC', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); color: var(--white); margin-bottom: 1rem; }
+    .cta-banner p { color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .btn-primary { background: var(--accent); color: var(--primary); padding: 14px 36px; border-radius: 2px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; display: inline-block; }
+    .btn-primary:hover { background: #e0bb62; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,168,76,0.35); }
+
+    /* FOOTER */
+    footer { background: #0a1120; padding: 40px 6vw 24px; color: rgba(255,255,255,0.5); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; flex-wrap: wrap; gap: 12px; }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Emma · 英联邦留学</a>
+  <ul class="nav-links">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="about.html">关于Emma</a></li>
+    <li><a href="cases.html">录取案例</a></li>
+    <li><a href="contact.html" class="active">常见问题</a></li>
+    <li><a href="contact.html" class="nav-cta">预约咨询</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-label">开始你的留学之旅</div>
+  <h1>预约免费咨询</h1>
+  <p>一次深度对话，帮你厘清方向、找到最适合的留学路径</p>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-label">联系方式</div>
+  <h2 class="section-title">与 Emma 取得联系</h2>
+
+  <div class="contact-grid">
+    <div class="contact-info-card">
+      <h3>📱 微信扫码咨询</h3>
+      <div class="qr-area" title="二维码待上传">
+        <div class="qr-icon-lg">📲</div>
+        <div class="qr-tip">微信二维码<br/>待上传</div>
+      </div>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);text-align:center;margin-bottom:1.5rem;">扫码添加 Emma 微信，即可开始免费咨询</p>
+
+      <div class="contact-divider"></div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">📧</div>
+        <div>
+          <div class="contact-item-label">邮件咨询</div>
+          <div class="contact-item-value">emma@ukec-edu.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🕐</div>
+        <div>
+          <div class="contact-item-label">服务时间</div>
+          <div class="contact-item-value">周一至周六 09:00 – 21:00</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div>
+          <div class="contact-item-label">线下咨询地址</div>
+          <div class="contact-item-value">成都市 · UKEC英国教育中心</div>
+        </div>
+      </div>
+
+      <div class="response-badge">
+        <span>⚡</span> 通常在 2 小时内回复
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>填写预约信息</h3>
+      <p class="form-sub">留下你的基本情况，Emma 会在工作时间内主动联系你</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>姓名 *</label>
+          <input type="text" placeholder="请输入你的姓名" />
+        </div>
+        <div class="form-group">
+          <label>微信号 *</label>
+          <input type="text" placeholder="方便 Emma 添加联系" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>当前学历</label>
+          <select>
+            <option value="">请选择</option>
+            <option>高中在读</option>
+            <option>本科在读</option>
+            <option>本科毕业</option>
+            <option>硕士在读/毕业</option>
+            <option>职场人士</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>意向申请层次</label>
+          <select>
+            <option value="">请选择</option>
+            <option>本科</option>
+            <option>硕士</option>
+            <option>博士</option>
+            <option>MBA</option>
+            <option>暂不确定</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>意向目的地</label>
+        <select>
+          <option value="">请选择（可多选意向）</option>
+          <option>英国</option>
+          <option>香港</option>
+          <option>澳大利亚</option>
+          <option>新加坡</option>
+          <option>新西兰</option>
+          <option>加拿大</option>
+          <option>暂不确定</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>简单介绍你的情况</label>
+        <textarea placeholder="例如：均分多少、有无科研/实习经历、语言成绩、计划什么时候入学等，越详细 Emma 越能提前准备有针对性的建议 😊"></textarea>
+      </div>
+      <button class="btn-submit">提交预约申请</button>
+      <p class="form-note">* 提交即视为同意接收 Emma 的咨询回复，信息仅用于预约沟通</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-label">常见问题</div>
+  <h2 class="section-title">你最想问的，这里都有答案</h2>
+
+  <div class="faq-grid">
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <span class="faq-q-text">我的成绩不算好，还有机会申请英联邦名校吗？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <p>成绩只是申请评估的一个维度，不是全部。很多顶尖院校会综合考察个人经历、科研/实习背景、文书质量和推荐信。Emma 有丰富的低分逆袭成功案例，关键是找到你真正的差异化竞争力。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <span class="faq-q-text">什么时候开始准备申请比较合适？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <p>越早越好。理想情况是提前 12-18 个月启动规划，这样有充足时间提升语言成绩、丰富背景、精打磨文书。当然，紧急备考的学生我们也有专属应急方案。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <span class="faq-q-text">跨专业申请可行吗？需要什么条件？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <p>完全可行，很多院校对跨专业申请持开放态度。关键是要有清晰的转专业逻辑，以及能支撑这一逻辑的相关经历（课程、实习、项目等）。Emma 擅长帮学生构建有说服力的跨专业故事。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <span class="faq-q-text">英国、香港、澳洲怎么选？有什么区别？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <p>三者各有优势：英国以学术声誉和文化底蕴见长；香港地理位置优越、学制灵活，适合关注亚洲职场的学生；澳洲生活质量高、移民政策友好。选择取决于你的职业目标、预算和生活偏好，Emma 会根据你的情况给出最诚实的建议。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <span class="faq-q-text">文书是 Emma 帮我写，还是我自己写？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <p>文书是共同创作的结果。Emma 会通过多轮深度访谈，挖掘你真实的想法和经历，然后协助你将这些内容提炼成有感染力的文字。最终的文书必须是"你的故事"，只是经过专业的打磨和呈现。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <span class="faq-q-text">有没有语言成绩要求？雅思几分才能申请？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <p>不同院校和专业要求不同，通常硕士申请需要雅思 6.5-7.5（整体）。部分院校有语言课 pathway 可作为过渡。Emma 会根据你的目标院校给出精准的语言成绩规划建议。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <span class="faq-q-text">博士申请和硕士申请有什么不同？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <p>博士申请的核心是"匹配合适的导师"。需要提前做大量导师研究，撰写个性化研究计划书（Research Proposal），通常还需要进行预联系（套磁）。Emma 在博士申请领域有丰富经验，成功帮助多位学生获得全额奖学金。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <span class="faq-q-text">第一次咨询是免费的吗？需要准备什么？</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">
+        <p>第一次深度背景评估咨询完全免费。建议提前整理好你的成绩单、语言成绩、实习/科研经历简要清单，以及你对未来的大致想法。信息越完整，Emma 的建议越有针对性。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>准备好开始了吗？</h2>
+  <p>第一次咨询免费，Emma 期待与你见面，一起为你的留学梦找到最清晰的路径。</p>
+  <a href="#contact" class="btn-primary">立即预约免费咨询</a>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <span>© 2025 Emma 留学顾问工作室. 保留所有权利.</span>
+    <div class="footer-links">
+      <a href="index.html">首页</a>
+      <a href="about.html">关于Emma</a>
+      <a href="cases.html">录取案例</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Form submit placeholder
+  document.querySelector('.btn-submit').addEventListener('click', function(e) {
+    e.preventDefault();
+    this.textContent = '✅ 已提交，Emma 将尽快联系您';
+    this.style.background = '#2e7d5e';
+    this.style.color = '#fff';
+    this.disabled = true;
+  });
+</script>
+</body>
+</html>
