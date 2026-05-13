@@ -1,181 +1,581 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>16年资深留学顾问 | 英联邦本硕博全程申请</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "微软雅黑", "PingFang SC", sans-serif;
-        }
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.8;
-        }
-        .wrap {
-            max-width: 900px;
-            margin: 40px auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
-        }
-        .header {
-            background: #0f3460;
-            color: #fff;
-            text-align: center;
-            padding: 50px 20px;
-        }
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-        .section {
-            padding: 35px 40px;
-            border-bottom: 1px solid #eee;
-        }
-        .section h2 {
-            color: #0f3460;
-            font-size: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid #1e5f99;
-            padding-left: 12px;
-        }
-        .text {
-            font-size: 16px;
-            color: #555;
-        }
-        .list-item {
-            background: #f8f9fa;
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin: 10px 0;
-            font-size: 16px;
-        }
-        .case-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        .case-item {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 15px;
-        }
-        .qrcode-box {
-            text-align: center;
-            padding: 20px;
-        }
-        .qrcode-placeholder {
-            width: 180px;
-            height: 180px;
-            border: 2px dashed #ccc;
-            margin: 0 auto 15px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-        }
-        .footer {
-            text-align: center;
-            padding: 25px;
-            color: #888;
-            font-size: 14px;
-        }
-        /* 手机适配 */
-        @media (max-width: 768px) {
-            .case-box {
-                grid-template-columns: 1fr;
-            }
-            .section {
-                padding: 25px 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emma 留学顾问 | 英联邦名校申请专家</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1a2744;
+      --accent: #c9a84c;
+      --accent-light: #e8d5a3;
+      --text: #2c2c2c;
+      --text-muted: #6b7280;
+      --bg: #f8f7f4;
+      --white: #ffffff;
+      --border: #e5e0d8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,39,68,0.97);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6vw;
+      height: 64px;
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+    }
+    .nav-logo {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.15rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--primary) !important;
+      padding: 7px 20px;
+      border-radius: 2px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: #e0bb62 !important; color: var(--primary) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f1a32 0%, #1a2744 55%, #22305a 100%);
+      display: flex; align-items: center;
+      padding: 100px 6vw 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: 42%;
+      background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900&q=80') center/cover;
+      opacity: 0.12;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 640px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--accent); font-size: 0.82rem; letter-spacing: 0.14em;
+      text-transform: uppercase; margin-bottom: 1.4rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 28px; height: 1px; background: var(--accent);
+    }
+    .hero h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 1.4rem;
+      font-weight: 700;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-desc {
+      font-size: 1.02rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 520px;
+      margin-bottom: 2.8rem;
+      line-height: 1.9;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--primary);
+      padding: 13px 32px;
+      border-radius: 2px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .btn-primary:hover { background: #e0bb62; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,168,76,0.35); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.85);
+      padding: 13px 32px;
+      border-radius: 2px;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-stats {
+      display: flex; gap: 3rem; margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2.2rem; font-weight: 700;
+      color: var(--accent); display: block;
+    }
+    .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 90px 6vw; }
+    .section-label {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--accent); font-size: 0.78rem; letter-spacing: 0.16em;
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .section-label::before { content: ''; display: block; width: 22px; height: 1px; background: var(--accent); }
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--text-muted); max-width: 560px; }
+
+    /* ── INTRO SECTION ── */
+    .intro { background: var(--white); }
+    .intro-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center; margin-top: 3.5rem;
+    }
+    .intro-photo {
+      aspect-ratio: 3/4; background: #ddd6cc;
+      border-radius: 2px; overflow: hidden;
+      position: relative;
+      display: flex; align-items: flex-end;
+    }
+    .photo-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, #c8bfb0 0%, #a89880 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px;
+    }
+    .photo-icon { font-size: 4rem; opacity: 0.4; }
+    .photo-tip { font-size: 0.78rem; color: rgba(0,0,0,0.35); letter-spacing: 0.06em; }
+    .photo-badge {
+      position: absolute; bottom: 20px; left: 20px;
+      background: var(--primary); color: var(--white);
+      padding: 10px 18px; font-size: 0.82rem; letter-spacing: 0.04em;
+    }
+    .intro-right {}
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.8rem 0; }
+    .tag {
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 5px 14px; font-size: 0.82rem; color: var(--primary);
+      border-radius: 2px;
+    }
+    .tag.gold { background: rgba(201,168,76,0.1); border-color: var(--accent); color: #8a6a1e; }
+    .intro-desc { color: var(--text-muted); line-height: 1.95; margin-bottom: 1.4rem; }
+    .quote-block {
+      border-left: 3px solid var(--accent);
+      padding: 12px 20px;
+      background: rgba(201,168,76,0.06);
+      font-style: italic;
+      color: var(--primary);
+      margin: 2rem 0;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.02rem;
+    }
+
+    /* ── REGION CARDS ── */
+    .regions { background: var(--bg); }
+    .regions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem; margin-top: 3rem;
+    }
+    .region-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 2px;
+      transition: all 0.25s;
+      display: block;
+    }
+    .region-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(26,39,68,0.1);
+    }
+    .region-flag { font-size: 2.4rem; margin-bottom: 0.8rem; }
+    .region-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--primary); margin-bottom: 0.4rem;
+    }
+    .region-sub { font-size: 0.78rem; color: var(--text-muted); }
+    .region-arrow {
+      display: inline-block; margin-top: 1rem;
+      color: var(--accent); font-size: 0.8rem; letter-spacing: 0.08em;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--primary); }
+    .testimonials .section-title { color: var(--white); }
+    .testimonials .section-label { color: var(--accent-light); }
+    .testimonials .section-label::before { background: var(--accent-light); }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.4rem; margin-top: 3rem;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 2px;
+      transition: border-color 0.2s;
+    }
+    .testi-card:hover { border-color: var(--accent); }
+    .testi-stars { color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .testi-text { color: rgba(255,255,255,0.78); line-height: 1.85; font-size: 0.92rem; margin-bottom: 1.4rem; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--accent); display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 700; color: var(--primary);
+      flex-shrink: 0;
+    }
+    .testi-name { font-size: 0.85rem; color: var(--white); font-weight: 500; }
+    .testi-meta { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a1120;
+      padding: 60px 6vw 30px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.2rem; color: var(--accent); margin-bottom: 0.8rem;
+    }
+    .footer-brand-desc { font-size: 0.85rem; line-height: 1.8; max-width: 280px; }
+    .footer-col h4 { color: rgba(255,255,255,0.7); font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 1.2rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul a { color: rgba(255,255,255,0.45); font-size: 0.83rem; text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--accent); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+    .qr-placeholder {
+      width: 80px; height: 80px; background: rgba(255,255,255,0.08);
+      border: 1px dashed rgba(255,255,255,0.2);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      border-radius: 2px; font-size: 0.62rem; color: rgba(255,255,255,0.3);
+      text-align: center; gap: 4px; margin-top: 0.8rem; cursor: pointer;
+    }
+    .qr-icon { font-size: 1.6rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-stats { gap: 1.8rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      nav { padding: 0 4vw; }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
 <body>
-    <div class="wrap">
-        <!-- 头部 -->
-        <div class="header">
-            <h1>16年资深留学规划顾问</h1>
-            <p>专注英联邦国家 本科 | 硕士 | 博士 全程申请</p>
-        </div>
 
-        <!-- 个人简介 -->
-        <div class="section">
-            <h2>个人简介</h2>
-            <p class="text">深耕留学行业16年，专注英联邦地区院校申请，熟悉各国院校录取政策、申请门槛、时间节点及签证规则。擅长背景评估、低分冲刺、跨专业申请、全程规划一站式服务，经验扎实，专业靠谱。</p>
-        </div>
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a class="nav-logo" href="index.html">Emma · 英联邦留学</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">首页</a></li>
+    <li><a href="about.html">关于Emma</a></li>
+    <li><a href="cases.html">录取案例</a></li>
+    <li><a href="contact.html">常见问题</a></li>
+    <li><a href="contact.html" class="nav-cta">预约咨询</a></li>
+  </ul>
+</nav>
 
-        <!-- 业务覆盖地区 -->
-        <div class="section">
-            <h2>业务覆盖地区</h2>
-            <div class="list-item">英国 · 中国香港 · 新加坡 · 澳洲</div>
-            <div class="list-item">新西兰 · 爱尔兰 · 马来西亚</div>
-            <div class="list-item">申请阶段：本科 / 硕士 / 博士</div>
-        </div>
-
-        <!-- 核心服务 -->
-        <div class="section">
-            <h2>核心服务项目</h2>
-            <div class="list-item">免费背景评估、精准择校定校</div>
-            <div class="list-item">文书打磨、简历PS推荐信指导</div>
-            <div class="list-item">网申递交、面试辅导、签证办理</div>
-            <div class="list-item">行前规划、住宿及留学后续指导</div>
-        </div>
-
-        <!-- 服务优势 -->
-        <div class="section">
-            <h2>服务核心优势</h2>
-            <div class="list-item">16年行业实操经验，熟悉院校内幕录取偏好</div>
-            <div class="list-item">一对一专属规划，不套路不模板</div>
-            <div class="list-item">全程透明跟进，申请节点实时同步</div>
-            <div class="list-item">多国家联申，大幅提升录取成功率</div>
-        </div>
-
-        <!-- 录取案例预留 -->
-        <div class="section">
-            <h2>精选录取案例</h2>
-            <div class="case-box">
-                <div class="case-item">香港名校 硕士录取</div>
-                <div class="case-item">英国百强院校 本硕录取</div>
-                <div class="case-item">新加坡公立院校 硕士录取</div>
-                <div class="case-item">澳洲/新西兰 本硕博录取</div>
-            </div>
-            <p class="text" style="margin-top:15px;color:#888;">后续可随时补充真实学生背景及录取院校</p>
-        </div>
-
-        <!-- 免费咨询预约 -->
-        <div class="section">
-            <h2>免费咨询预约</h2>
-            <p class="text">不限院校、不限学历背景，均可免费做留学定位评估、规划方案定制。<br>意向英联邦留学，随时咨询，一对一专业解答。</p>
-        </div>
-
-        <!-- 联系方式 微信二维码 -->
-        <div class="section">
-            <h2>联系方式</h2>
-            <div class="qrcode-box">
-                <div class="qrcode-placeholder">微信二维码<br>放置区域</div>
-                <p class="text">扫码添加微信 | 免费留学咨询规划</p>
-            </div>
-        </div>
-
-        <!-- 底部 -->
-        <div class="footer">
-            16年专业留学顾问 · 英联邦本硕博全程申请服务
-        </div>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">英联邦留学申请专家</div>
+    <h1>二十年深耕，<br/>让每一个<span>留学梦</span><br/>落地生根</h1>
+    <p class="hero-desc">
+      从本科到博士，从英国剑桥到香港港大，从澳洲八大到新加坡国立，
+      Emma 以二十年行业积累，陪伴每一位学子走过最关键的申请旅程。
+    </p>
+    <div class="hero-btns">
+      <a href="cases.html" class="btn-primary">查看录取案例</a>
+      <a href="about.html" class="btn-outline">了解 Emma</a>
     </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">20<sup style="font-size:1rem">年</sup></span>
+        <div class="stat-label">行业经验</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">500<sup style="font-size:1rem">+</sup></span>
+        <div class="stat-label">成功案例</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">92<sup style="font-size:1rem">%</sup></span>
+        <div class="stat-label">名校录取率</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">6</span>
+        <div class="stat-label">覆盖地区</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INTRO ── -->
+<section class="intro">
+  <div class="section-label">顾问简介</div>
+  <h2 class="section-title">认识 Emma</h2>
+  <p class="section-sub">二十年，她不只是顾问，更是学生的大姐姐与人生导师</p>
+
+  <div class="intro-grid">
+    <div class="intro-photo">
+      <div class="photo-placeholder">
+        <div class="photo-icon">👩‍💼</div>
+        <div class="photo-tip">照片待上传</div>
+      </div>
+      <div class="photo-badge">高级留学顾问 · 20年</div>
+    </div>
+    <div class="intro-right">
+      <div class="tag-row">
+        <span class="tag gold">英国名校申请</span>
+        <span class="tag gold">香港院校</span>
+        <span class="tag gold">澳洲八大</span>
+        <span class="tag gold">新加坡国立</span>
+        <span class="tag">本科申请</span>
+        <span class="tag">硕士申请</span>
+        <span class="tag">博士申请</span>
+        <span class="tag">低分逆袭</span>
+        <span class="tag">跨专业转换</span>
+      </div>
+
+      <p class="intro-desc">
+        Emma 从业二十余年，深耕英联邦国家与地区的留学申请服务，对英国、香港、澳大利亚、新加坡、新西兰、加拿大等地的顶尖院校录取规则、申请偏好与奖学金机制了如指掌。
+      </p>
+      <p class="intro-desc">
+        她以细腻的沟通风格著称——对学生，她是温暖陪伴的大姐姐；对家长，她是值得托付的专业顾问老师。无论面对名校冲刺还是低分逆袭，Emma 始终以负责任的态度，为每一位学子量身定制最优申请方案。
+      </p>
+
+      <blockquote class="quote-block">
+        "每一份 Offer，都是我们共同努力的见证。<br/>我最大的成就感，来自学生开心的那一刻。"
+      </blockquote>
+
+      <a href="about.html" class="btn-primary" style="display:inline-block;">了解更多 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── REGIONS ── -->
+<section class="regions">
+  <div class="section-label">服务地区</div>
+  <h2 class="section-title">覆盖英联邦主要留学目的地</h2>
+  <p class="section-sub">点击地区，查看真实录取案例</p>
+
+  <div class="regions-grid">
+    <a class="region-card" href="cases.html?region=uk">
+      <div class="region-flag">🇬🇧</div>
+      <div class="region-name">英国</div>
+      <div class="region-sub">G5精英 · 罗素大学集群</div>
+      <div class="region-arrow">查看案例 →</div>
+    </a>
+    <a class="region-card" href="cases.html?region=hk">
+      <div class="region-flag">🇭🇰</div>
+      <div class="region-name">香港</div>
+      <div class="region-sub">港大 · 港中文 · 科大</div>
+      <div class="region-arrow">查看案例 →</div>
+    </a>
+    <a class="region-card" href="cases.html?region=au">
+      <div class="region-flag">🇦🇺</div>
+      <div class="region-name">澳大利亚</div>
+      <div class="region-sub">澳洲八大 · 全球百强</div>
+      <div class="region-arrow">查看案例 →</div>
+    </a>
+    <a class="region-card" href="cases.html?region=sg">
+      <div class="region-flag">🇸🇬</div>
+      <div class="region-name">新加坡</div>
+      <div class="region-sub">NUS · NTU · SMU</div>
+      <div class="region-arrow">查看案例 →</div>
+    </a>
+    <a class="region-card" href="cases.html?region=nz">
+      <div class="region-flag">🇳🇿</div>
+      <div class="region-name">新西兰</div>
+      <div class="region-sub">奥克兰大学 · 坎特伯雷</div>
+      <div class="region-arrow">查看案例 →</div>
+    </a>
+    <a class="region-card" href="cases.html?region=ca">
+      <div class="region-flag">🇨🇦</div>
+      <div class="region-name">加拿大</div>
+      <div class="region-sub">多伦多 · UBC · 麦吉尔</div>
+      <div class="region-arrow">查看案例 →</div>
+    </a>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials">
+  <div class="section-label">学生与家长评价</div>
+  <h2 class="section-title">他们这样说</h2>
+
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">
+        "Emma 老师在我最迷茫的时候给了我清晰的方向。从选校到文书，每一步都极其专业。最终拿到 UCL 的 Offer 那天，我第一时间发消息给她，眼泪都出来了。"
+      </p>
+      <div class="testi-author">
+        <div class="testi-avatar">林</div>
+        <div>
+          <div class="testi-name">林同学</div>
+          <div class="testi-meta">UCL 建筑学硕士 · 2024届</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">
+        "作为家长，最担心的就是中介不靠谱。但 Emma 老师让我们全程放心——每周主动汇报进展，遇到问题也都坦诚沟通。孩子顺利进入香港大学，真的非常感谢。"
+      </p>
+      <div class="testi-author">
+        <div class="testi-avatar">王</div>
+        <div>
+          <div class="testi-name">王女士（学生家长）</div>
+          <div class="testi-meta">香港大学法律学 · 2024届</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">
+        "我均分只有 75 分，很多人说我没希望冲澳洲八大。Emma 帮我重新挖掘背景优势，定制了非常有说服力的文书。最终录取墨尔本大学，远超预期！"
+      </p>
+      <div class="testi-author">
+        <div class="testi-avatar">陈</div>
+        <div>
+          <div class="testi-name">陈同学</div>
+          <div class="testi-meta">墨尔本大学金融硕士 · 2023届</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">
+        "Emma 老师不仅帮我拿到了新加坡国立的录取，还帮我争取到了部分奖学金。她对院校政策的了解程度让我非常震惊，感觉在她面前没有解决不了的问题。"
+      </p>
+      <div class="testi-author">
+        <div class="testi-avatar">张</div>
+        <div>
+          <div class="testi-name">张同学</div>
+          <div class="testi-meta">新加坡国立大学计算机 · 2024届</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">
+        "本来是想申请普通学校的，Emma 看完我的背景后说'你可以冲更高'，然后帮我做了一份完整的冲刺方案。最终剑桥大学博士 Offer 真的太惊喜了！"
+      </p>
+      <div class="testi-author">
+        <div class="testi-avatar">刘</div>
+        <div>
+          <div class="testi-name">刘同学</div>
+          <div class="testi-meta">剑桥大学博士 · 2023届</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">
+        "我是跨专业申请，毫无把握。Emma 老师帮我梳理了跨专业的逻辑脉络，文书写得非常有深度。现在在爱丁堡大学读数据科学，感觉找到了真正喜欢的方向。"
+      </p>
+      <div class="testi-author">
+        <div class="testi-avatar">赵</div>
+        <div>
+          <div class="testi-name">赵同学</div>
+          <div class="testi-meta">爱丁堡大学数据科学 · 2024届</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Emma · 英联邦留学申请专家</div>
+      <p class="footer-brand-desc">二十年专注英联邦留学申请，以专业、耐心、负责的服务理念，陪伴每一位学子圆梦海外名校。</p>
+      <div class="qr-placeholder" title="微信二维码待上传">
+        <div class="qr-icon">📱</div>
+        <div>微信二维码</div>
+        <div>待上传</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>快速导航</h4>
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于 Emma</a></li>
+        <li><a href="cases.html">录取案例</a></li>
+        <li><a href="contact.html">常见问题</a></li>
+        <li><a href="contact.html">预约咨询</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>服务地区</h4>
+      <ul>
+        <li><a href="cases.html?region=uk">🇬🇧 英国</a></li>
+        <li><a href="cases.html?region=hk">🇭🇰 香港</a></li>
+        <li><a href="cases.html?region=au">🇦🇺 澳大利亚</a></li>
+        <li><a href="cases.html?region=sg">🇸🇬 新加坡</a></li>
+        <li><a href="cases.html?region=nz">🇳🇿 新西兰</a></li>
+        <li><a href="cases.html?region=ca">🇨🇦 加拿大</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Emma 留学顾问工作室. 保留所有权利.</span>
+    <span>专业 · 耐心 · 负责</span>
+  </div>
+</footer>
+
 </body>
 </html>
